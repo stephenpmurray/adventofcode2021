@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/stephenpmurray/adventofcode2021/day01"
+	"github.com/stephenpmurray/adventofcode2021/day02"
 )
 
 func main() {
@@ -12,5 +13,7 @@ func main() {
 	day01.PartTwo(vals)
 
 	// day 2
-
+	m := day02.ReadFile()
+	day02.PartOne(m)
+	day02.PartTwo(m)
 }
