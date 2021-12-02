@@ -1,4 +1,4 @@
-package main
+package day01
 
 import (
 	"fmt"
@@ -14,7 +14,7 @@ func sum(ii []int) (c int) {
 	return c
 }
 
-func main() {
+func ReadFile() []int {
 	b, err := os.ReadFile("/home/smurray/adventofcode2021/day01/input")
 	if err != nil {
 		panic(err)
@@ -23,14 +23,17 @@ func main() {
 	ss := strings.Split(string(b), "\n")
 
 	var vals []int
-	for _, s := range ss[:len(ss)-1] {
+	for _, s := range ss[:len(ss)-1] { // ignore empty string at end
 		i, err := strconv.Atoi(s)
 		if err != nil {
 			panic(err)
 		}
 		vals = append(vals, i)
 	}
+	return vals
+}
 
+func PartOne(vals []int) {
 	// part 1
 	c := 0
 	for i := 0; i < (len(vals) - 1); i++ {
@@ -39,9 +42,11 @@ func main() {
 		}
 	}
 	fmt.Println(c)
+}
 
+func PartTwo(vals []int) {
 	// part 2
-	c = 0
+	c := 0
 	first := sum(vals[0:3])
 	for i := 1; i < (len(vals) - 2); i++ {
 		second := sum(vals[i : i+3])
